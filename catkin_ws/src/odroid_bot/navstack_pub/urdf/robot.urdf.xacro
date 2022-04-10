@@ -1,0 +1,284 @@
+<?xml version="1.0"?>
+<robot name="robot">
+<material name="blue">
+    <color rgba="0 0 0.8 1"/>
+  </material>
+
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+
+
+  <link name="bottom3">
+    <visual>
+      <geometry>
+        <box size="0.07 0.110 0.003"/>
+      </geometry>
+      <material name="blue"/>
+      <origin rpy="0 0 0" xyz="0.0525 0 0"/>
+    </visual>
+     <collision>
+      <geometry>
+        <box size="0.08 0.120 0.003"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="bottom3 to base_link" type="fixed">
+    <parent link="base_link"/>
+    <child link="bottom3"/>
+    <origin xyz="0.0175 0 0"/>
+  </joint>  
+  
+<link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.07 0.07 0.003"/>
+      </geometry>
+      <material name="blue"/>
+      <origin rpy="0 0 0" xyz="-0.0175 0 0"/>
+    </visual>
+     <collision>
+      <geometry>
+        <box size="0.08 0.07 0.003"/>
+      </geometry>
+    </collision>
+  </link>  
+
+<link name="bottom1">
+    <visual>
+      <geometry>
+        <box size="0.035 0.110 0.003"/>
+      </geometry>
+      <material name="blue"/>
+      <origin rpy="0 0 0" xyz="-0.07 0 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.045 0.120 0.003"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="bottom1 to base_link" type="fixed">
+    <parent link="base_link"/>
+    <child link="bottom1"/>
+    <origin xyz="0.0525 0 0"/>
+  </joint>  
+  
+  <link name="top">
+    <visual>
+      <geometry>
+        <box size="0.175 0.110 0.003"/>
+      </geometry>
+      <material name="blue"/>
+      <origin rpy="0 0 0" xyz="0 0 0.025"/>
+    </visual>
+  </link>
+  
+  <joint name="top joint" type="fixed">
+    <parent link="pillar1"/>
+    <child link="top"/>
+    <origin xyz="-0.0825 0.05 0.025"/>
+  </joint>
+  
+  <link name="pillar1">
+    <visual>
+      <geometry>
+        <cylinder length="0.025" radius="0.005"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="-0.0825 0.05 0.0125"/>
+    </visual>
+  </link>
+  
+  <joint name="pillar1 joint" type="fixed">
+    <parent link="bottom1"/>
+    <child link="pillar1"/>
+    <origin xyz="-0.0825 0.05 -0.025"/>
+  </joint>
+  
+    <link name="pillar2">
+    <visual>
+      <geometry>
+        <cylinder length="0.025" radius="0.005"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.0825 0.05 0.0125"/>
+    </visual>
+  </link>
+  
+  <joint name="pillar2 joint" type="fixed">
+    <parent link="bottom3"/>
+    <child link="pillar2"/>
+    <origin xyz="0.0825 0.05 -0.025"/>
+  </joint>
+  
+    <link name="pillar3">
+    <visual>
+      <geometry>
+        <cylinder length="0.025" radius="0.005"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="-0.0825 -0.05 0.0125"/>
+    </visual>
+  </link>
+  
+  <joint name="pillar3 joint" type="fixed">
+    <parent link="bottom1"/>
+    <child link="pillar3"/>
+    <origin xyz="-0.0825 -0.05 -0.025"/>
+  </joint>
+
+    <link name="pillar4">
+    <visual>
+      <geometry>
+        <cylinder length="0.025" radius="0.005"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.0825 -0.05 0.0125"/>
+    </visual>
+  </link>
+  
+  <joint name="pillar4 joint" type="fixed">
+    <parent link="bottom3"/>
+    <child link="pillar4"/>
+    <origin xyz="0.0825 -0.05 -0.025"/>
+  </joint>
+
+
+   <link name="right motor">
+    <visual>
+      <geometry>
+        <box size="0.048 0.019 0.022"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="-0.0175 0.0255 -0.012"/>
+    </visual>
+  </link>
+  
+   <joint name="right motor joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="right motor"/>
+    <origin xyz="-0.0175 0.0255 -0.012"/>
+  </joint>
+  
+     <link name="left motor">
+    <visual>
+      <geometry>
+        <box size="0.048 0.019 0.022"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="-0.0175 -0.0255 -0.012"/>
+    </visual>
+  </link>
+  
+   <joint name="left motor joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="left motor"/>
+    <origin xyz="-0.0175 -0.0255 -0.012"/>
+  </joint>
+
+    <link name="right shaft">
+    <visual>
+      <geometry>
+        <cylinder length="0.008" radius="0.004"/>
+      </geometry>
+      <origin rpy="1.57079 0 0" xyz="-0.0175 0.039 -0.012"/>
+    </visual>
+  </link>
+
+   <joint name="right shaft joint" type="fixed">
+    <parent link="right motor"/>
+    <child link="right shaft"/>
+    <origin xyz="-0.0175 0.039 -0.012"/>
+  </joint>  
+  
+    <link name="left shaft">
+    <visual>
+      <geometry>
+        <cylinder length="0.008" radius="0.004"/>
+      </geometry>
+      <origin rpy="-1.57079 0 0" xyz="-0.0175 -0.039 -0.012"/>
+    </visual>
+  </link>
+
+   <joint name="left shaft joint" type="fixed">
+    <parent link="left motor"/>
+    <child link="left shaft"/>
+    <origin xyz="-0.0175 -0.039 -0.012"/>
+  </joint>  
+  
+    <link name="right wheel">
+    <visual>
+      <geometry>
+        <cylinder length="0.025" radius="0.0325"/>
+      </geometry>
+            <origin rpy="1.57079 0 0" xyz="-0.0175 0.05 -0.012"/>
+    </visual>
+  </link>
+  
+    <joint name="right_wheel_joint" type="continuous">
+    <parent link="right shaft"/>
+    <child link="right wheel"/>
+    <axis xyz="1 0 0"/>
+    <origin xyz="-0.0175 0.05 -0.012"/>
+  </joint>
+  
+      <link name="left wheel">
+    <visual>
+      <geometry>
+        <cylinder length="0.025" radius="0.0325"/>
+      </geometry>
+            <origin rpy="1.57079 0 0" xyz="-0.0175 -0.05 -0.012"/>
+    </visual>
+  </link>
+  
+    <joint name="left_wheel_joint" type="continuous">
+    <parent link="left shaft"/>
+    <child link="left wheel"/>
+    <axis xyz="1 0 0"/>
+    <origin xyz="-0.0175 -0.05 -0.012"/>
+  </joint>
+
+  <link name="lidar">
+    <visual>
+      <geometry>
+        <cylinder length="0.055" radius="0.03515"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.051 0 0.054"/>
+    </visual>
+  </link>    
+  
+    <joint name="lidar joint" type="fixed">
+    <parent link="top"/>
+    <child link="lidar"/>
+    <origin xyz="0.051 0 0.054"/>
+  </joint>
+  
+  <link name="ball pillar">
+    <visual>
+      <geometry>
+        <cylinder length="0.025" radius="0.005"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.08 0 -0.012"/>
+    </visual>
+  </link>  
+  
+  <joint name="ball pillar joint" type="fixed">
+    <parent link="bottom3"/>
+    <child link="ball pillar"/>
+    <origin xyz="0.08 0 -0.012"/>
+  </joint>  
+  
+  
+  <link name="ball">
+    <visual>
+      <geometry>
+        <sphere radius="0.00925"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.08 0 -0.033"/>
+    </visual>
+  </link>  
+  
+  <joint name="ball joint" type="fixed">
+    <parent link="ball pillar"/>
+    <child link="ball"/>
+    <origin xyz="0.08 0 -0.033"/>
+  </joint>   
+  
+</robot>
