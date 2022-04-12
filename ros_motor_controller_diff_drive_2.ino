@@ -74,14 +74,14 @@ const double WHEEL_BASE = 0.10;
  
 // Number of ticks a wheel makes moving a linear distance of 1 meter
 // This value was measured manually.
-const double TICKS_PER_METER = 3100; // Originally 2880
+const double TICKS_PER_METER = 1302; // approximately by using 20.73cm wheel circumference
  
 // Proportional constant, which was measured by measuring the 
 // PWM-Linear Velocity relationship for the robot.
-const int K_P = 278;
+const int K_P = 511; //511.456
  
 // Y-intercept for the PWM-Linear Velocity relationship for the robot
-const int b = 52;
+const int b = 73; //72.667
  
 // Correction multiplier for drift. Chosen through experimentation.
 const int DRIFT_MULTIPLIER = 120;
@@ -90,8 +90,8 @@ const int DRIFT_MULTIPLIER = 120;
 const int PWM_TURN = 150;
  
 // Set maximum and minimum limits for the PWM values
-const int PWM_MIN = 150; // about 0.1 m/s
-const int PWM_MAX = 150; // about 0.172 m/s
+const int PWM_MIN = 100; // 0.05344m/s 
+const int PWM_MAX = 150; // 0.1512m/s 
  
 // Set linear velocity and PWM variable values for each wheel
 double velLeftWheel = 0;
